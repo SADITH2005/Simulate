@@ -1,0 +1,67 @@
+:root { --primary: #2c3e50; --accent: #3498db; --success: #27ae60; --danger: #e74c3c; --ai: #8e44ad; }
+body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; display: flex; height: 100vh; background: #ecf0f1; }
+
+#shelf { width: 200px; background: #bdc3c7; border-right: 4px solid #7f8c8d; display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 15px; z-index: 10; }
+.shelf-title { font-weight: bold; margin-bottom: 5px; }
+.draggable-box { width: 80px; height: 80px; background: #d35400; border: 2px solid #a04000; cursor: grab; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border-radius: 5px; user-select: none; transition: 0.2s;}
+.draggable-box:active { cursor: grabbing; transform: scale(0.95); }
+.shelf-hint { font-size: 11px; text-align: center; margin-top: 5px; }
+
+#container { flex-grow: 1; position: relative; }
+#invoice-area { position: absolute; top: 20px; left: 20px; width: 180px; background: white; padding: 15px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; text-align: center; z-index: 10; }
+#invoice-area h4 { margin: 0 0 10px 0; font-size: 14px; border-bottom: 1px dashed #999; padding-bottom: 5px;}
+.barcode { width: 100%; height: 40px; background: repeating-linear-gradient(90deg, #000, #000 2px, #fff 2px, #fff 4px); margin-bottom: 10px; }
+.customer-info { font-size: 10px; margin-bottom: 10px; }
+#scan-btn { background: var(--accent); color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 4px; width: 100%; font-weight: bold; }
+
+#details { width: 300px; background: var(--primary); color: white; padding: 20px; box-shadow: -4px 0 10px rgba(0,0,0,0.2); z-index: 10; display: flex; flex-direction: column; }
+.stat-box { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+.stat-label { font-size: 12px; text-transform: uppercase; opacity: 0.8; margin-bottom: 5px;}
+.stat-value { font-size: 24px; font-weight: bold; font-family: 'Courier New', Courier, monospace; color: #f1c40f; }
+
+/* AI Section Styles */
+.ai-box { background: rgba(142, 68, 173, 0.2); border: 1px solid var(--ai); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+.ai-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.ai-title { font-weight: bold; color: #d2b4de; font-size: 14px; }
+#ai-terminal { background: #000; color: #0f0; font-family: 'Courier New', Courier, monospace; font-size: 10px; padding: 10px; border-radius: 4px; height: 50px; overflow-y: auto; text-align: left; }
+
+/* Toggle Switch */
+.switch { position: relative; display: inline-block; width: 34px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--ai); }
+input:checked + .slider:before { transform: translateX(14px); }
+
+#submit-btn { width: 100%; padding: 15px; background: var(--success); color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: auto; transition: 0.3s; }
+#submit-btn:hover { filter: brightness(1.1); }
+#submit-btn:disabled { background: #7f8c8d; cursor: not-allowed; }
+#status-msg { margin-top: 15px; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; display: none; }
+
+@media (max-width: 768px) {
+    body { flex-direction: column; height: auto; min-height: 100vh; }
+    #shelf { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; border-right: none; border-bottom: 4px solid #7f8c8d; padding: 10px; box-sizing: border-box; }
+    .draggable-box { width: 60px; height: 60px; font-size: 14px; margin: 5px; }
+    #container { width: 100%; height: 50vh; } 
+    #details { width: 100%; box-sizing: border-box; }
+}
+
+/* Scale Control Buttons */
+.control-buttons { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 15px; 
+}
+.control-buttons button { 
+    flex: 1; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: 0.2s;
+}
+#undo-btn { background: #f39c12; color: white; }
+#undo-btn:hover { background: #d68910; }
+#clear-btn { background: #c0392b; color: white; }
+#clear-btn:hover { background: #a93226; }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered QC Simulation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="shelf">
+        <div class="shelf-title">Items Shelf</div>
+        <div class="draggable-box" draggable="true" data-weight="1">1 KG</div>
+        <div class="draggable-box" draggable="true" data-weight="2">2 KG</div>
+        <div class="draggable-box" draggable="true" data-weight="5">5 KG</div>
+        <p class="shelf-hint">Drag items (Desktop)<br>or Click to add (Mobile)</p>
+    </div>
+
+    <div id="container">
+        <div id="invoice-area">
+            <h4>INVOICE #8821</h4>
+            <div class="barcode"></div>
+            <p class="customer-info">Customer: Warehouse A</p>
+            <button id="scan-btn">SCAN BARCODE</button>
+        </div>
+    </div>
+
+    <div id="details">
+        <h2>Live Monitor</h2>
+        <div class="stat-box">
+            <div class="stat-label">Target Weight</div>
+            <div id="target-val" class="stat-value">-- KG</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Current Scale</div>
+            <div id="current-val" class="stat-value">0.00 KG</div>
+        </div>
+        
+        <div class="control-buttons">
+            <button id="undo-btn">↩ Undo Last</button>
+            <button id="clear-btn">🗑️ Clear Scale</button>
+        </div>
+
+        <div class="ai-box">
+            <div class="ai-header">
+                <span class="ai-title">🤖 AI Vision QA</span>
+                <label class="switch">
+                    <input type="checkbox" id="ai-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div id="ai-terminal">Waiting for system trigger...</div>
+        </div>
+        
+        <button id="submit-btn">SUBMIT VERIFICATION</button>
+        <div id="status-msg"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
